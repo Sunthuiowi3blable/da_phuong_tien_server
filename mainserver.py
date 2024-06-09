@@ -1,23 +1,26 @@
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify
+from dbblable import *
+from mutilsblable import *
 
 app = Flask(__name__)
+db = DaPhuongTienDB()
 
-@app.route('/video/<name_video>')
-def get_video(name_video):
-    return send_from_directory('src\\videos', name_video)
+# GET ROUTE
+@app.route('/', methods=['GET'])
+def get_db():
+    return jsonify(db.db_json)
 
-@app.route('/image/<name_image>')
-def get_image(name_image):
-    return send_from_directory('src\\images', name_image)
+@app.route('/videos', methods=['GET'])
+def get_videos():
+    return jsonify(db.db_json['videos'])
 
-@app.route('/audio/<name_audio>')
-def get_audio(name_audio):
-    return send_from_directory('src\\audios', name_audio)
+@app.route('/images', methods=['GET'])
+def get_images():
+    return jsonify(db.db_json['images'])
 
-
-
-
-
+@app.route('/audios', methods=['GET'])
+def get_audios():
+    return jsonify(db.db_json['audios'])
 
 
 
