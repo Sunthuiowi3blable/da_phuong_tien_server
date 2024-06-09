@@ -4,7 +4,7 @@ import json
 
 class DaPhuongTienDB:
 
-    def __init__(self, server_name="LAPTOP-CULASPTF", database_name="DaPhuongTien"):
+    def __init__(self, server_name="LAPTOP-CULASPTF", database_name="dptdb"):
         self.conn = pyodbc.connect("Driver={SQL Server};"
                       f"Server={server_name};"
                       f"Database={database_name};"
